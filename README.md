@@ -33,7 +33,7 @@ CREATE DATABASE laborNCS CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 ### STEP 2: Create Tables
 
-#### Student Table (Mahasiswa)
+#### 2.1 Student Table (Mahasiswa)
 ```sql
 CREATE TABLE Mahasiswa (
     id_mhs int NOT NULL PRIMARY KEY,
@@ -46,7 +46,7 @@ CREATE TABLE Mahasiswa (
 ```
 
 
-#### 2.1 Lab Assistant Table (AsistenPraktikum)
+#### 2.2 Lab Assistant Table (AsistenPraktikum)
 ```sql
 CREATE TABLE AsistenPraktikum (
     id_asprak int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -58,7 +58,7 @@ CREATE TABLE AsistenPraktikum (
 ```
 
 
-#### 2.2 Subject Table (Matakuliah)
+#### 2.3 Subject Table (Matakuliah)
 ```sql
 CREATE TABLE Matakuliah (
     id_matkul int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -69,7 +69,7 @@ CREATE TABLE Matakuliah (
 ```
 
 
-#### 2.3 Laboratory Room Table (RuangLabor)
+#### 2.4 Laboratory Room Table (RuangLabor)
 ```sql
 CREATE TABLE RuangLabor (
     id_labor int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -80,7 +80,7 @@ CREATE TABLE RuangLabor (
 ```
 
 
-#### 2.4 Course Schedule Table (JadwalKuliah)
+#### 2.5 Course Schedule Table (JadwalKuliah)
 ```sql
 CREATE TABLE JadwalKuliah (
     id_jadwal int AUTO_INCREMENT PRIMARY KEY,
