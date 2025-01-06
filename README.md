@@ -44,6 +44,8 @@ CREATE TABLE Mahasiswa (
     kontak_mhs bigint
     );
 ```
+Output :
+![image](https://github.com/user-attachments/assets/4e3e9adf-3c0b-4a07-8190-2db931653943)
 
 
 #### 2.2 Lab Assistant Table (AsistenPraktikum)
@@ -56,6 +58,8 @@ CREATE TABLE AsistenPraktikum (
     kontak_asprak bigint
     );
 ```
+Output :
+![image](https://github.com/user-attachments/assets/9964e107-1aa1-4598-934d-8ca9b18e845f)
 
 
 #### 2.3 Subject Table (Matakuliah)
@@ -67,6 +71,8 @@ CREATE TABLE Matakuliah (
     dosen_matkul varchar(100)
 );
 ```
+Output :
+![image](https://github.com/user-attachments/assets/61e8ad9f-fdc1-428f-adef-938b12c33293)
 
 
 #### 2.4 Laboratory Room Table (RuangLabor)
@@ -78,6 +84,8 @@ CREATE TABLE RuangLabor (
     keterangan text
     );
 ```
+Output :
+![image](https://github.com/user-attachments/assets/a47b790d-99b7-4149-b92c-52f5929254ce)
 
 
 #### 2.5 Course Schedule Table (JadwalKuliah)
@@ -99,11 +107,11 @@ CREATE TABLE JadwalKuliah (
 ) ENGINE=INNODB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci;
- ```
-
+```
+Output :
+![image](https://github.com/user-attachments/assets/238089c9-b7aa-4e32-a76a-81780eb9ba0c)
 
 ---
-```
 ## STEP 3: Input 20 Rows Data Master
 
 ### 3.1 Student Table (Mahasiswa)
@@ -130,6 +138,8 @@ INSERT INTO mahasiswa(id_mhs, nama_mhs, npm_mhs, Semester, angkatan_mhs, kontak_
 (19,'Vina Aisyah',4522210066,5,2022,081106743821),
 (20,'Aulia Zahra Sabila',4522210132,5,2022,081314585984);
 ```
+Output :
+![image](https://github.com/user-attachments/assets/c05a16d0-3616-45e6-96f3-0b88731966ce)
 
 
 
@@ -157,6 +167,8 @@ INSERT INTO asistenpraktikum(nama_asprak, npm_asprak, email_asprak, kontak_aspra
 ('Zahra Tsabitah', '4523210145', 'zahratsabitah96@gmail.com', '089621239559'),
 ('Irmawati Pakpahan', '4523210054', 'irma98@gmail.com', '087897972517');
 ```
+Output :
+![image](https://github.com/user-attachments/assets/7df264ec-3c8d-45f6-a9a5-d8675b50122e)
 
 
 ### 3.3 Subject (matakuliah)
@@ -183,6 +195,8 @@ INSERT INTO matakuliah(id_matkul, nama_matkul, sks_matkul, dosen_matkul) VALUES
 (119,'Desain Analisis Algoritma',3,'Dr. Ionia Veritawati S.Si, M.T'),
 (120,'Secure Programming',3,'Gregorius Hendita S.Si, M.Cs')
 ```
+Output :
+![image](https://github.com/user-attachments/assets/718dbae3-7104-4b65-97a3-bff7127407d0)
 
 ### 3.4 Course Schedule (Ruanglabor)
 ```sql
@@ -207,6 +221,8 @@ INSERT INTO matakuliah(id_matkul, nama_matkul, sks_matkul, dosen_matkul) VALUES
 (119, 19, 'Tidak Tersedia', 'Digunakan Mahasiswa'),
 (120, 20, 'Tidak Tersedia', 'Digunakan Mahasiswa');
 ```
+Output :
+![image](https://github.com/user-attachments/assets/8b7b50e1-7ce6-405b-bf5e-948d30a44415)
 
 ### 3.5 Course Schedule (Jadwalkuliah)
 ```sql
@@ -233,9 +249,11 @@ VALUES
 (19, 19, 16, 112, 102, 'Senin', '2024-03-04', '09:00', '11:00'),
 (20, 20, 8, 117, 115, 'Selasa', '2024-03-05', '14:00', '16:00');
 ```
+Output :
+![image](https://github.com/user-attachments/assets/8a657f84-d4f6-410d-9f8d-923e130b627a)
 
 
-
+---
 ## STEP 4: Implementation Transaction
 ### 4.1 Atomicity (Commit & Rollback
 ```sql
@@ -246,6 +264,9 @@ INSERT INTO JadwalKuliah (id_jadwal, id_mhs, id_asprak, id_matkul, id_labor, har
 (22, 19, 3, 102, 105, 'Kamis', '2024-03-07', '13:00', '15:00');
 COMMIT;
 ```
+Output Sesudah Transaction Sukses :
+![image](https://github.com/user-attachments/assets/f4444a3c-d20a-4882-82af-f3d806bb32e4)
+
 ```sql
 START TRANSACTION;
 
@@ -254,6 +275,9 @@ DELETE FROM JadwalKuliah WHERE id_jadwal = 22;
 
 ROLLBACK;
 ```
+Output :
+![image](https://github.com/user-attachments/assets/7f2edf8b-4f50-4e60-8705-dfa980df100a)
+
 ### 4.2 Consistency Invalid User
 ```sql
 START TRANSACTION;
@@ -263,6 +287,8 @@ COMMIT;
 
 SELECT * FROM jadwalkuliah;
 ```
+Output :
+![image](https://github.com/user-attachments/assets/547c1431-d7ed-461e-99ea-acba24ba316b)
 
 ### 4.3 Isolation
 ```sql
@@ -277,6 +303,8 @@ SELECT * FROM jadwalkuliah WHERE id_jadwal = 21 FOR UPDATE;
 
 COMMIT;
 ```
+Output :
+![image](https://github.com/user-attachments/assets/14765738-28af-4a0c-ac50-aed51e1067e3)
 
 ## STEP 5: Buatkan skenario apabila ada kesalahan maka seluruh transaksi batal
 ```sql
@@ -291,3 +319,5 @@ UPDATE jadwalkuliah SET jam_mulai = NULL WHERE id_jadwal = 22;
 
 COMMIT;
 ```
+Output :
+![image](https://github.com/user-attachments/assets/5edcc32b-7ce0-4374-a7de-a2f884cbfe7d)
